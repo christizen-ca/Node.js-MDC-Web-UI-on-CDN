@@ -16,49 +16,53 @@
 <!--Loading font family-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"><style>
-  .mdc-top-app-bar{
-  /*adjust to Appbar position due to default style error*/
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+<style>
+/*adjust to Appbar position due to default style error*/
+.mdc-top-app-bar{
   top:0px;
   left:0px;
-  }
+}
 
-  /*Riffle effect in the surface*/
-  .mdc-ripple-surface {
-    border-radius: 50%;
-  }
+/*Riffle effect in the surface
+.mdc-ripple-surface {
+  border-radius: 50%;
+}
+*/
 
-  /*Text in the card component*/
-  .my-card-content {
-    padding: 16px;
-  }
+/*Text in the card component
+.my-card-content {
+  padding: 16px;
+}
+*/
 
-  /*Text in the media card component*/
-  .mdc-card__media-content{
-    padding: 16px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  }
+/*Text in the media card component*/
+.mdc-card__media-content{
+  padding: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
 
-  /*When the position is absolute, here is how to use a horizontal center-align. left value is 50%,  margin-left value is -50% of width*/
-  .mdc-card {
-    position:absolute;
-    left:50%;
-    margin-left:-20%;
-    height: auto;
-    width: 40%;    
-  }
+/*When the position is absolute, here is how to use a horizontal center-align. left value is 50%,  margin-left value is -50% of width*/
+.mdc-card {
+  position:absolute;
+  left:50%;
+  margin-left:-20%;
+  height: auto;
+  width: 40%;
+}
 
-  /*URL to load image to media card component*/
-  .my-card__media {
-    background-image: url("https://lh3.googleusercontent.com/DttyZQpJepBHlNe4pXEMJ5H6c53d97tplli_vXusdzZbpeY5SDLO7NwqiUEgqJ5VeAxvVdLT5suK_zGbZ0GpAe4NrjWbQqIf17uK5i0=w1064-v0");
-  }
+/*URL to load image to media card component*/
+.my-card__media {
+  background-image: url("https://lh3.googleusercontent.com/DttyZQpJepBHlNe4pXEMJ5H6c53d97tplli_vXusdzZbpeY5SDLO7NwqiUEgqJ5VeAxvVdLT5suK_zGbZ0GpAe4NrjWbQqIf17uK5i0=w1064-v0");
+}
 
-  .mdc-card__ripple{
-
-  }
+.mdc-card__ripple{
+}
 </style>
 
 <script>
+  //This JS is not checked fully
   const topAppBarElement = document.querySelector('.mdc-top-app-bar');
   const topAppBar = new MDCTopAppBar(topAppBarElement);
 
@@ -78,6 +82,7 @@
     <div class="mdc-top-app-bar__row">
       <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
           <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button" aria-label="Open navigation menu">
+            <!--Give a ripple effect on mdc-icon-button with CSS-->
             <div class="mdc-icon-button__ripple"></div>
             menu
           </button>
@@ -111,6 +116,7 @@
 
       <div class="mdc-card__actions">
         <button class="mdc-button mdc-card__action mdc-card__action--button">
+          <!--Give a ripple effect on mdc-button with CSS. mdc-button needs div and span tag for the effect-->
           <div class="mdc-button__ripple"></div>
           <span class="mdc-button__label">Action 1</span>
         </button>
@@ -120,10 +126,6 @@
         </button>
       </div>
     </div>
-  </main>
- 
-  
-
-  
+  </main>  
 </body>
 </html>
