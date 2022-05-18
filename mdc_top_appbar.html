@@ -1,0 +1,129 @@
+<html>
+<head>
+<!--Loading CSS CDN for MUI -->
+<link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+
+<!--Loading Javascript CDN for MUI-->
+<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+
+<!--Loading Javascript CDN for MUI dev
+<script src="https://unpkg.com/@mui/material@latest/umd/material-ui.development.js"></script>
+-->
+
+<!--Loading material icons set-->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<!--Loading font family-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"><style>
+  .mdc-top-app-bar{
+  /*adjust to Appbar position due to default style error*/
+  top:0px;
+  left:0px;
+  }
+
+  /*Riffle effect in the surface*/
+  .mdc-ripple-surface {
+    border-radius: 50%;
+  }
+
+  /*Text in the card component*/
+  .my-card-content {
+    padding: 16px;
+  }
+
+  /*Text in the media card component*/
+  .mdc-card__media-content{
+    padding: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+
+  /*When the position is absolute, here is how to use a horizontal center-align. left value is 50%,  margin-left value is -50% of width*/
+  .mdc-card {
+    position:absolute;
+    left:50%;
+    margin-left:-20%;
+    height: auto;
+    width: 40%;    
+  }
+
+  /*URL to load image to media card component*/
+  .my-card__media {
+    background-image: url("https://lh3.googleusercontent.com/DttyZQpJepBHlNe4pXEMJ5H6c53d97tplli_vXusdzZbpeY5SDLO7NwqiUEgqJ5VeAxvVdLT5suK_zGbZ0GpAe4NrjWbQqIf17uK5i0=w1064-v0");
+  }
+
+  .mdc-card__ripple{
+
+  }
+</style>
+
+<script>
+  const topAppBarElement = document.querySelector('.mdc-top-app-bar');
+  const topAppBar = new MDCTopAppBar(topAppBarElement);
+
+  //const surface = document.querySelector('.mdc-top-app-bar');
+  //const ripple = new MDCRipple(surface);
+  //const ripple = new MDCRipple(document.querySelector('._moreicon'));
+
+  const selector = '.mdc-button, .mdc-icon-button, .mdc-card__primary-action';
+  const ripples = [].map.call(document.querySelectorAll(selector), function(el) {
+    return new MDCRipple(el);
+    });
+</script>
+</head>
+
+<body>
+  <header class="mdc-top-app-bar">
+    <div class="mdc-top-app-bar__row">
+      <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+          <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button" aria-label="Open navigation menu">
+            <div class="mdc-icon-button__ripple"></div>
+            menu
+          </button>
+
+        <span class="mdc-top-app-bar__title">Page title</span>
+      </section>
+      <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+          <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Favorite">
+            <div class="mdc-icon-button__ripple"></div>
+            favorite
+          </button>
+
+          <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Search">
+            <div class="mdc-icon-button__ripple"></div>
+            search
+          </button>        
+
+          <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Options">
+            <div class="mdc-icon-button__ripple"></div>
+            more_vert
+          </button>
+
+      </section>
+    </div>
+  </header>
+  <main class="mdc-top-app-bar--fixed-adjust">
+    <div class="mdc-card mdc-card--outlined">
+      <div class="my-card__media mdc-card__media mdc-card__media--16-9">
+        <div class="mdc-card__media-content">Media card test title</div>
+        </div>
+
+      <div class="mdc-card__actions">
+        <button class="mdc-button mdc-card__action mdc-card__action--button">
+          <div class="mdc-button__ripple"></div>
+          <span class="mdc-button__label">Action 1</span>
+        </button>
+        <button class="mdc-button mdc-card__action mdc-card__action--button">
+          <div class="mdc-button__ripple"></div>
+          <span class="mdc-button__label">Action 2</span>
+        </button>
+      </div>
+    </div>
+  </main>
+ 
+  
+
+  
+</body>
+</html>
