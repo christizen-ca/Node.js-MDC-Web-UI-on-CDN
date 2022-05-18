@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--Load CSS from CDN-->
+	<link rel="stylesheet" href="https://unpkg.com/material-components-web@v5.0.0/dist/material-components-web.min.css"/>
+	
+	<!--Load Javascript from CDN-->
+	<script type="text/javascript" src="https://unpkg.com/material-components-web@v5.0.0/dist/material-components-web.min.js"></script>
+	
+	<style>
+	
+	html, body {  
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 32px;
+}
+	.demo-headline {
+	margin-bottom: 32px;
+}
+	.mdc-text-field {
+	margin-bottom: 24px;
+	flex-shrink: 0;
+}
+	.greet-message {
+	margin-top: 48px; 
+}
+</style>
+</head>
+
+<body>
+	<h6 class="mdc-typography mdc-typography--headline6 demo-headline">MDC Web Quick Start</h6>
+	
+	<div class="mdc-text-field">
+		<input type="text" id="my-text-field" class="mdc-text-field__input first-name-input">
+		<label class="mdc-floating-label" for="my-text-field">First name</label>
+		<div class="mdc-line-ripple"></div>
+	</div>
+	
+	<div class="mdc-text-field">
+		<input type="text" id="my-text-field" class="mdc-text-field__input last-name-input">
+		<label class="mdc-floating-label" for="my-text-field" >Last name</label>
+		<div class="mdc-line-ripple"></div>
+	</div>
+	
+	<button class="mdc-button greet-button">
+		<div class="mdc-button__ripple"></div>
+		<div class="mdc-button__label">Greet</div>
+	</button>
+	
+	<!--Show what user put in the textfields-->
+	<div class="mdc-typography mdc-typography--overline greet-message"></div>
+	
+	<script>
+	/* Initialize MDC Web components.*/
+	const buttons = document.querySelectorAll('.mdc-button');
+	for (const button of buttons) {
+		/*Way to apply ripple effect on the button with JS*/
+		mdc.ripple.MDCRipple.attachTo(button);
+}
+	const textFields = document.querySelectorAll('.mdc-text-field');
+	for (const textField of textFields) {
+		mdc.textField.MDCTextField.attachTo(textField);
+}
+	/** Custom javascript code. */
+	const greetMessageEl = document.querySelector('.greet-message');
+	const greetButton = document.querySelector('.greet-button');
+	greetButton.addEventListener('click', () => {
+		const firstNameInput = document.querySelector('.first-name-input').value;
+		const lastNameInput = document.querySelector('.last-name-input').value;
+		let name;
+		
+		if (firstNameInput || lastNameInput) {
+			name = firstNameInput + ' ' + lastNameInput;
+		} 
+		else {
+		name = 'Anonymous';
+	}
+	greetMessageEl.textContent = `Hello, ${name}!`;
+});
+</script>
+</body>
+</html>
