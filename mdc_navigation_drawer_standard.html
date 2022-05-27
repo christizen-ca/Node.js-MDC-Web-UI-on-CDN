@@ -1,0 +1,166 @@
+<html>
+<head>
+<!--Loading CSS CDN for MUI -->
+<link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+
+<!--Loading Javascript CDN for MUI-->
+<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+
+<!--Loading Javascript CDN for MUI dev
+<script src="https://unpkg.com/@mui/material@latest/umd/material-ui.development.js"></script>
+-->
+
+<!--Loading material icons set-->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<!--Loading font family-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+<style>
+
+body {
+  display: flex;
+  /*height: 100vh;*/
+
+  margin: 0; height: 100%; overflow: hidden;
+}
+
+.mdc-drawer-app-content {
+  flex: auto;
+  overflow: auto;
+  position: relative;
+}
+
+.main-content {
+  overflow: auto;
+  height: 100%;
+}
+
+.app-bar {
+  position: absolute;
+}
+
+.mdc-drawer {
+  top:4.5rem;
+  position: fixed !important;
+}
+
+/* only apply this style if below top app bar*/
+.mdc-top-app-bar {
+  z-index: 7;
+
+  /*force to fix the margin error*/
+  top:0px;
+  left:0px;
+}
+
+/*URL to load image to media card component*/
+.my-card__media {
+  background-image: url("https://lh3.googleusercontent.com/DttyZQpJepBHlNe4pXEMJ5H6c53d97tplli_vXusdzZbpeY5SDLO7NwqiUEgqJ5VeAxvVdLT5suK_zGbZ0GpAe4NrjWbQqIf17uK5i0=w1064-v0");
+}
+
+
+.mdc-card {
+  position:absolute;
+  left:50%;
+  margin-left:-36%;
+  margin-top: 32px;
+  height: auto;
+  width: 72%;
+}
+
+</style>
+
+
+</head>
+
+<body>
+    <!--mdc-top-app-bar--fixed means top app bar is fixed on the topa all the time-->
+    <header class="mdc-top-app-bar mdc-top-app-bar--fixed" id="app-bar">
+        <div class="mdc-top-app-bar__row">
+            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                <a href="#" class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">
+                    <div class="mdc-icon-button__ripple"></div>menu</a>
+                <span class="mdc-top-app-bar__title">Dismissible Drawer</span>
+            </section>
+
+            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+                <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Favorite">
+                <div class="mdc-icon-button__ripple"></div>
+                favorite
+                </button>
+    
+                <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Search">
+                <div class="mdc-icon-button__ripple"></div>
+                search
+                </button>        
+    
+                <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Options">
+                <div class="mdc-icon-button__ripple"></div>
+                more_vert
+                </button>
+            </section>
+        </div>
+    </header>
+
+    <aside class="mdc-drawer mdc-drawer--dismissible mdc-top-app-bar--fixed-adjust">
+        <div class="mdc-drawer__content">
+        <div class="mdc-list">
+            <a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page">
+            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inbox</i>
+            <span class="mdc-list-item__text">Inbox</span>
+            </a>
+            <a class="mdc-list-item" href="#">
+            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">send</i>
+            <span class="mdc-list-item__text">Outgoing</span>
+            </a>
+            <a class="mdc-list-item" href="#">
+            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">drafts</i>
+            <span class="mdc-list-item__text">Drafts</span>
+            </a>
+        </div>
+        </div>
+    </aside>
+
+    <div class="mdc-drawer-app-content mdc-top-app-bar--fixed-adjust">
+        <main class="main-content" id="main-content">
+            <div class="mdc-card mdc-card--outlined">
+                <div class="my-card__media mdc-card__media mdc-card__media--16-9">
+                <div class="mdc-card__media-content">Media card test title</div>
+                </div>
+        
+                <div class="mdc-card__actions">
+                <button class="mdc-button mdc-card__action mdc-card__action--button">
+                    <!--Give a ripple effect on mdc-button with CSS. mdc-button needs div and span tag for the effect-->
+                    <div class="mdc-button__ripple"></div>
+                    <span class="mdc-button__label">Action 1</span>
+                </button>
+                <button class="mdc-button mdc-card__action mdc-card__action--button">
+                    <div class="mdc-button__ripple"></div>
+                    <span class="mdc-button__label">Action 2</span>
+                </button>
+                </div>
+            </div>
+        </main>
+    </div>
+  
+    <!--This script should be here not in the head tag-->
+    <script>
+        const drawer = mdc.drawer.MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
+        const topAppBar = mdc.topAppBar.MDCTopAppBar.attachTo(document.getElementById('app-bar'));
+        topAppBar.setScrollTarget(document.getElementById('main-content'));
+        topAppBar.listen('MDCTopAppBar:nav', () => {
+            drawer.open = !drawer.open;
+        });
+        
+            window.addEventListener("load", function(event) {
+                if(window.innerWidth > 1024) {
+                    drawer.open = !drawer.open;
+                        }
+                            });
+    </script>
+</body>
+
+</html>
