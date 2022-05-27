@@ -19,57 +19,164 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
 <style>
+:root {
+    /*set the variable to use color theme*/
+    --mdc-theme-primary: #6200EE;
+    --mdc-theme-on-primary: #000000;
+    --mdc-theme-on-secondary: #992832;
+    --mdc-theme-accent: lightblue;
+    --mdc-top-app-bar-fixed-box-shadow: 4;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
 
 body {
-  display: flex;
-  /*height: 100vh;*/
+    display: flex;
+    /*height: 100vh;*/
 
-  margin: 0; height: 100%; overflow: hidden;
+    margin: 0; height: 100%; overflow: hidden;
 }
 
 .mdc-drawer-app-content {
-  flex: auto;
-  overflow: auto;
-  position: relative;
+    flex: auto;
+    overflow: auto;
+    position: relative;
 }
 
 .main-content {
-  overflow: auto;
-  height: 100%;
+    overflow: auto;
+    height: 100%;
 }
 
 .app-bar {
-  position: absolute;
+    position: absolute;
+
 }
 
 .mdc-drawer {
-  top:4.5rem;
-  position: fixed !important;
+    top:4.5rem;
+    position: fixed !important;
 }
 
 /* only apply this style if below top app bar*/
 .mdc-top-app-bar {
-  z-index: 7;
+    z-index: 7;
 
-  /*force to fix the margin error*/
-  top:0px;
-  left:0px;
+    /*force to fix the margin error*/
+    top:0px;
+    left:0px;
+    background-color: #FFFFFF;
+}
+
+.mdc-top-app-bar__title {
+    color:var(--mdc-theme-on-primary)
+}
+
+/*Text in the media card component*/
+.mdc-card__media-content{
+    padding: 16px;
+}
+
+/*When the position is absolute, here is how to use a horizontal center-align. left value is 50%,  margin-left value is -50% of width*/
+.mdc-card {
+    position:relative;
+    left:50%;
+    margin-left:-280px;
+    margin-top: 32px;
+    height: auto;
+    width: 560px;
+}
+
+.title_in_the_main_frame{
+    position:relative;
+    left:50%;
+    margin-left:-280px;
+    height: auto;
+    width: 560px;
+    color:var(--mdc-theme-on-primary);
 }
 
 /*URL to load image to media card component*/
-.my-card__media {
-  background-image: url("https://lh3.googleusercontent.com/DttyZQpJepBHlNe4pXEMJ5H6c53d97tplli_vXusdzZbpeY5SDLO7NwqiUEgqJ5VeAxvVdLT5suK_zGbZ0GpAe4NrjWbQqIf17uK5i0=w1064-v0");
+.my-card__media1 {
+  background-image: url("https://thekitchencommunity.org/wp-content/uploads/2021/03/43-Foods-That-Start-With-D-1200x900.jpg");
+}
+
+.my-card__media2 {
+  background-image: url("https://hips.hearstapps.com/clv.h-cdn.co/assets/15/22/1432664914-strawberry-facts1.jpg");
+}
+
+.my-card__media3 {
+  background-image: url("https://img.freepik.com/free-photo/grilled-chicken-wings-flaming-grill-with-grilled-vegetables-barbecue-sauce-with-pepper-seeds-rosemary-salt-top-view-with-copy-space_1150-37780.jpg?w=2000");
+}
+
+.material-icons {
+    /*High emphasis color settings*/
+    color: var(--mdc-theme-on-primary);
+    opacity: 87%;
+    top:0px;
+    left:0px;
+}
+
+.icon-buttons {
+    print-color-adjust: white;
+
+}
+
+.mdc-list {
+    padding-top: 0px;
+    top:50px;
+    
+}
+
+.mdc-list-item__text {
+    /*High emphasis color settings*/
+    color: var(--mdc-theme-on-primary);
+    opacity: 87%;
+}
+
+.mdc-list-item {
+    padding-left:24px;
+    height:42px;
+    vertical-align:middle;
+    width:240px;
+
+    /*setting for the text vertical-middle in the item*/
+    line-height:42px;
+    
 }
 
 
-.mdc-card {
-  position:absolute;
-  left:50%;
-  margin-left:-36%;
-  margin-top: 32px;
-  height: auto;
-  width: 72%;
+.material-icons-in-menu-drawer {
+    /*setting for the icon vertical-middle in the item*/
+    line-height: 42px;
 }
+
+.list-item-text {
+    /*span tag needs to make that block to give the padding value*/
+    display:inline-block;
+    padding-left: 16px;
+}
+
+.mdc-top-app-bar--fixed-adjust {
+    padding-top: 16px;
+    width: 264px;
+    top:64px;
+}
+
+.block_of_center_align_for_cards {
+    text-align:center;
+    width:100%;
+}
+
+.flexible_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*height: 100vh;*/
+    flex-direction: column;
+}
+
+
 
 </style>
 
@@ -78,7 +185,8 @@ body {
 
 <body>
     <!--mdc-top-app-bar--fixed means top app bar is fixed on the topa all the time-->
-    <header class="mdc-top-app-bar mdc-top-app-bar--fixed" id="app-bar">
+    <!--In the state, mdc-elevation--z"(3)number" higher number means the component has higher elevation-->
+    <header class="mdc-top-app-bar mdc-top-app-bar--fixed mdc-elevation--z4" id="app-bar">
         <div class="mdc-top-app-bar__row">
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
                 <a href="#" class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">
@@ -105,44 +213,94 @@ body {
         </div>
     </header>
 
-    <aside class="mdc-drawer mdc-drawer--dismissible mdc-top-app-bar--fixed-adjust">
+    <aside class="mdc-drawer mdc-drawer--dismissible mdc-top-app-bar--fixed-adjust mdc-elevation--z4">
         <div class="mdc-drawer__content">
-        <div class="mdc-list">
-            <a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page">
-            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inbox</i>
-            <span class="mdc-list-item__text">Inbox</span>
-            </a>
-            <a class="mdc-list-item" href="#">
-            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">send</i>
-            <span class="mdc-list-item__text">Outgoing</span>
-            </a>
-            <a class="mdc-list-item" href="#">
-            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">drafts</i>
-            <span class="mdc-list-item__text">Drafts</span>
-            </a>
-        </div>
+            <ul class="mdc-list">
+                <li class="mdc-list-item" tabindex="0">
+                  <span class="mdc-list-item__graphic material-icons material-icons-in-menu-drawer">home</span>
+                  <span class="mdc-list-item__ripple"></span>
+                  <span class="mdc-list-item__text list-item-text">Home</span>
+                    </span>
+                </li>
+                <li class="mdc-list-item" tabindex="0">
+                  <span class="mdc-list-item__graphic material-icons material-icons-in-menu-drawer">article</span>
+                  <span class="mdc-list-item__ripple"></span>
+                  <span class="mdc-list-item__text list-item-text">Article</span>
+                </li>
+                <li class="mdc-list-item" tabindex="0">
+                  <span class="mdc-list-item__graphic material-icons material-icons-in-menu-drawer">question_answer</span>
+                  <span class="mdc-list-item__ripple"></span>
+                  <span class="mdc-list-item__text list-item-text">Q&A</span>
+                </li>
+                <li class="mdc-list-item" tabindex="0">
+                  <span class="mdc-list-item__graphic material-icons material-icons-in-menu-drawer">settings</span>
+                  <span class="mdc-list-item__ripple"></span>
+                  <span class="mdc-list-item__text list-item-text">Settings</span>
+                </li>
+              </ul>
         </div>
     </aside>
 
-    <div class="mdc-drawer-app-content mdc-top-app-bar--fixed-adjust">
+    <div class="mdc-drawer-app-content" style="padding-top:64px;">
         <main class="main-content" id="main-content">
-            <div class="mdc-card mdc-card--outlined">
-                <div class="my-card__media mdc-card__media mdc-card__media--16-9">
-                <div class="mdc-card__media-content">Media card test title</div>
+                <div class="title_in_the_main_frame">
+                    <h2>Recommendation</h2>
                 </div>
-        
-                <div class="mdc-card__actions">
-                <button class="mdc-button mdc-card__action mdc-card__action--button">
-                    <!--Give a ripple effect on mdc-button with CSS. mdc-button needs div and span tag for the effect-->
-                    <div class="mdc-button__ripple"></div>
-                    <span class="mdc-button__label">Action 1</span>
-                </button>
-                <button class="mdc-button mdc-card__action mdc-card__action--button">
-                    <div class="mdc-button__ripple"></div>
-                    <span class="mdc-button__label">Action 2</span>
-                </button>
+                
+                <div class="mdc-card mdc-card--outlined">
+                    <div class="my-card__media1 mdc-card__media mdc-card__media--16-9">
+                    <div class="mdc-card__media-content"><h3 style="color:#FFFFFF;opacity: 86%;">Donuts</h4></div>
+                    </div>
+            
+                    <div class="mdc-card__actions">
+                    <button class="mdc-button mdc-card__action mdc-card__action--button">
+                        <!--Give a ripple effect on mdc-button with CSS. mdc-button needs div and span tag for the effect-->
+                        <div class="mdc-button__ripple"></div>
+                        <span class="mdc-button__label">Save</span>
+                    </button>
+                    <button class="mdc-button mdc-card__action mdc-card__action--button">
+                        <div class="mdc-button__ripple"></div>
+                        <span class="mdc-button__label">Like</span>
+                    </button>
+                    </div>
                 </div>
-            </div>
+
+
+                <div class="mdc-card mdc-card--outlined">
+                    <div class="my-card__media2 mdc-card__media mdc-card__media--16-9">
+                    <div class="mdc-card__media-content"><h3 style="color:#FFFFFF;opacity: 86%;">Strawberries</h4></div>
+                    </div>
+            
+                    <div class="mdc-card__actions">
+                    <button class="mdc-button mdc-card__action mdc-card__action--button">
+                        <!--Give a ripple effect on mdc-button with CSS. mdc-button needs div and span tag for the effect-->
+                        <div class="mdc-button__ripple"></div>
+                        <span class="mdc-button__label">Save</span>
+                    </button>
+                    <button class="mdc-button mdc-card__action mdc-card__action--button">
+                        <div class="mdc-button__ripple"></div>
+                        <span class="mdc-button__label">Like</span>
+                    </button>
+                    </div>
+                </div>
+
+                <div class="mdc-card mdc-card--outlined">
+                    <div class="my-card__media3 mdc-card__media mdc-card__media--16-9">
+                    <div class="mdc-card__media-content"><h3 style="color:#FFFFFF;opacity: 86%;">Barbecue</h4></div>
+                    </div>
+            
+                    <div class="mdc-card__actions">
+                    <button class="mdc-button mdc-card__action mdc-card__action--button">
+                        <!--Give a ripple effect on mdc-button with CSS. mdc-button needs div and span tag for the effect-->
+                        <div class="mdc-button__ripple"></div>
+                        <span class="mdc-button__label">Save</span>
+                    </button>
+                    <button class="mdc-button mdc-card__action mdc-card__action--button">
+                        <div class="mdc-button__ripple"></div>
+                        <span class="mdc-button__label">Like</span>
+                    </button>
+                    </div>
+                </div>
         </main>
     </div>
   
@@ -155,11 +313,14 @@ body {
             drawer.open = !drawer.open;
         });
         
-            window.addEventListener("load", function(event) {
-                if(window.innerWidth > 1024) {
-                    drawer.open = !drawer.open;
-                        }
-                            });
+        window.addEventListener("load", function(event) {
+            if(window.innerWidth > 1024) {
+                drawer.open = !drawer.open;
+                    }
+                        });
+
+        const list = new MDCList(document.querySelector('.mdc-list'));
+        const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
     </script>
 </body>
 
