@@ -1,0 +1,110 @@
+<html>
+<head>
+<!--Loading CSS CDN for MUI -->
+<link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+
+<!--Loading Javascript CDN for MUI-->
+<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+
+<!--Loading Javascript CDN for MUI dev
+<script src="https://unpkg.com/@mui/material@latest/umd/material-ui.development.js"></script>
+-->
+
+<!--Loading material icons set-->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<!--Loading font family-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+<style>
+
+:root {
+    /*set the variable to use color theme*/
+    --mdc-theme-primary: #000000;
+    --mdc-theme-accent: lightblue;
+}
+
+body {
+    display: flex;
+    /*height: 100vh;*/
+
+    margin: 0; height: 100%; overflow: hidden;
+}
+
+.material-icons {
+    /*High emphasis color settings*/
+    color: var(--mdc-theme-primary);
+    opacity: 87%;
+    top:0px;
+    left:0px;
+}
+
+.mdc-list-item__text {
+    /*High emphasis color settings*/
+    color: var(--mdc-theme-primary);
+    opacity: 87%;
+}
+
+.mdc-list-item {
+    padding-left:24px;
+    height:42px;
+    vertical-align:middle;
+    width:240px;
+
+    /*setting for the text vertical-middle in the item*/
+    line-height:42px;
+    
+}
+
+.material-icons {
+    /*setting for the icon vertical-middle in the item*/
+    line-height: 42px;
+}
+
+.list-item-text {
+    /*span tag needs to make that block to give the padding value*/
+    display:inline-block;
+    padding-left: 16px;
+}
+
+
+
+</style>
+</head>
+
+<body>
+<ul class="mdc-list">
+  <li class="mdc-list-item" tabindex="0">
+    <span class="mdc-list-item__graphic material-icons">home</span>
+    <span class="mdc-list-item__ripple"></span>
+    <span class="mdc-list-item__text list-item-text">Home</span>
+      </span>
+  </li>
+  <li class="mdc-list-item" tabindex="0">
+    <span class="mdc-list-item__graphic material-icons">article</span>
+    <span class="mdc-list-item__ripple"></span>
+    <span class="mdc-list-item__text list-item-text">Article</span>
+  </li>
+  <li class="mdc-list-item" tabindex="0">
+    <span class="mdc-list-item__graphic material-icons">question_answer</span>
+    <span class="mdc-list-item__ripple"></span>
+    <span class="mdc-list-item__text list-item-text">Q&A</span>
+  </li>
+  <li class="mdc-list-item" tabindex="0">
+    <span class="mdc-list-item__graphic material-icons">settings</span>
+    <span class="mdc-list-item__ripple"></span>
+    <span class="mdc-list-item__text list-item-text">Settings</span>
+  </li>
+</ul>
+
+    <!--This script should be here not in the head tag-->
+    <script>
+        const list = new MDCList(document.querySelector('.mdc-list'));
+
+        const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
+    </script>
+</body>
+
+</html>
