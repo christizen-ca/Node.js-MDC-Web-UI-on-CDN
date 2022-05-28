@@ -33,12 +33,11 @@
 
 
 body {
-
     margin: 0; 
     display: flex;
     /*height: 100vh;*/
-
-    margin: 0; height: 100%; overflow: hidden; scroll-behavior: unset;
+    height: 100%; 
+    overflow: auto;
 }
 
 .mdc-drawer-app-content {
@@ -106,9 +105,12 @@ body {
     height: auto;
     width: 560px;
     color:var(--mdc-theme-on-primary);
+
+    /*Padding value for the dismissing top app bar scenario*/
+    padding-top: 64px;
 }
 
-/*URL to load image to media card component*/
+/*URL to load image to each media card component*/
 .my-card__media1 {
   background-image: url("https://thekitchencommunity.org/wp-content/uploads/2021/03/43-Foods-That-Start-With-D-1200x900.jpg");
 }
@@ -157,7 +159,6 @@ body {
     
 }
 
-
 .material-icons-in-menu-drawer {
     /*setting for the icon vertical-middle in the item*/
     line-height: 42px;
@@ -187,12 +188,7 @@ body {
     /*height: 100vh;*/
     flex-direction: column;
 }
-
-
-
 </style>
-
-
 </head>
 
 <body>
