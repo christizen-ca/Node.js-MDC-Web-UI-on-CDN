@@ -30,11 +30,15 @@
 
 }
 
+
+
 body {
+
+    margin: 0; 
     display: flex;
     /*height: 100vh;*/
 
-    margin: 0; height: 100%; overflow: hidden;
+    margin: 0; height: 100%; overflow: hidden; scroll-behavior: unset;
 }
 
 .mdc-drawer-app-content {
@@ -54,9 +58,17 @@ body {
 }
 
 .mdc-drawer {
+    /*
     top:4.5rem;
     position: fixed !important;
+    */
+
+    /*When the app bar is dismissing, the drawer area should be full from the top. Ther
+    top:0px;
+    width:fit-content;
+    */
 }
+
 
 /* only apply this style if below top app bar*/
 .mdc-top-app-bar {
@@ -186,7 +198,9 @@ body {
 <body>
     <!--mdc-top-app-bar--fixed means top app bar is fixed on the topa all the time-->
     <!--In the state, mdc-elevation--z"(3)number" higher number means the component has higher elevation-->
-    <header class="mdc-top-app-bar mdc-top-app-bar--fixed mdc-elevation--z4" id="app-bar">
+    <!--
+    <header class="mdc-top-app-bar mdc-top-app-bar--fixed mdc-elevation--z4" id="app-bar">-->
+    <header class="mdc-top-app-bar mdc-elevation--z4" id="app-bar">
         <div class="mdc-top-app-bar__row">
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
                 <a href="#" class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">
@@ -213,10 +227,14 @@ body {
         </div>
     </header>
 
-    <aside class="mdc-drawer mdc-drawer--dismissible mdc-top-app-bar--fixed-adjust mdc-elevation--z4">
-        <div class="mdc-drawer__content">
+    <aside class="mdc-drawer mdc-drawer--dismissible mdc-top-app-bar--fixed-adjust mdc-elevation--z4" style="top:0px;width:fit-content;">
+        <div class="mdc-drawer__content">  
             <ul class="mdc-list">
-                <li class="mdc-list-item" tabindex="0">
+                <!--This li is a hidden when the app bar is shown, but it shows when the app bar is dismissing-->
+                <li class="mdc-list-item" style="height:48px;border-bottom: 1px solid #00000015;">Menu drawer</li>
+
+                <!--Give the margin between the first li and top app bar-->
+                <li class="mdc-list-item" style="margin-top: 16px;" tabindex="0">
                   <span class="mdc-list-item__graphic material-icons material-icons-in-menu-drawer">home</span>
                   <span class="mdc-list-item__ripple"></span>
                   <span class="mdc-list-item__text list-item-text">Home</span>
@@ -241,7 +259,9 @@ body {
         </div>
     </aside>
 
-    <div class="mdc-drawer-app-content" style="padding-top:64px;">
+    <!--
+    <div class="mdc-drawer-app-content" style="padding-top:64px;">-->
+    <div class="mdc-drawer-app-content">
         <main class="main-content" id="main-content">
                 <div class="title_in_the_main_frame">
                     <h2>Recommendation</h2>
