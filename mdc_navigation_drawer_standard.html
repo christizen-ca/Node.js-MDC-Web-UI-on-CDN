@@ -165,13 +165,13 @@ body {
 }
 
 .list-item-text {
-    /*span tag needs to make that block to give the padding value*/
+    /*span tag needs to make that block setting to give the padding value*/
     display:inline-block;
     padding-left: 16px;
 }
 
 .mdc-top-app-bar--fixed-adjust {
-    padding-top: 16px;
+    padding-top: 8px;
     width: 264px;
     top:64px;
 }
@@ -187,6 +187,18 @@ body {
     align-items: center;
     /*height: 100vh;*/
     flex-direction: column;
+}
+
+/*Menu drawer menu title when the top app mar is dismissing*/
+#li_menu{
+    height:48px;
+    border-bottom: 1px solid #00000015;
+}
+
+/*Wrapping the style to fit the items in the menu drawer*/
+#drawer_wrapper{
+    top:0px;
+    width:fit-content;
 }
 </style>
 </head>
@@ -223,11 +235,11 @@ body {
         </div>
     </header>
 
-    <aside class="mdc-drawer mdc-drawer--dismissible mdc-top-app-bar--fixed-adjust mdc-elevation--z4" style="top:0px;width:fit-content;">
+    <aside class="mdc-drawer mdc-drawer--dismissible mdc-top-app-bar--fixed-adjust mdc-elevation--z4" id="drawer_wrapper">
         <div class="mdc-drawer__content">  
             <ul class="mdc-list">
                 <!--This li is a hidden when the app bar is shown, but it shows when the app bar is dismissing-->
-                <li class="mdc-list-item" style="height:48px;border-bottom: 1px solid #00000015;">Menu drawer</li>
+                <li class="mdc-list-item" id="li_menu">Menu drawer</li>
 
                 <!--Give the margin between the first li and top app bar-->
                 <li class="mdc-list-item" style="margin-top: 16px;" tabindex="0">
